@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ question.pk }}번 질문 :</h1>
+<h2>{{ question.question }}</h2>
+<p>작성자 : {{ question.user }} 작성일 : {{ question.created_at }}</p>
+<h3>답변</h3>
+<p>{{ answer }}</p>
+{% endblock content %}

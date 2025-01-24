@@ -17,7 +17,7 @@ messages = [{"role": "sytem", "content": prompt}]
 # exit가 입력되기 전까지 계속 대화할 거예요
 while True:
     
-    f1 = open("communication.txt", "a")
+    f1 = open("communication.txt", "a", encoding="utf-8")
     f1.write('User: ')
     # 사용자 입력받기
     user_input = input("User: ")

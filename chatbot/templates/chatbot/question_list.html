@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href = "{% url 'chatbot:question' %}">질문하기</a>
+{% for question in questions %}
+<hr>
+<a href = "{% url 'chatbot:answer' question.id %}">[{{ question.id }}]</a>
+{% endfor %}
+{% endblock content %}
