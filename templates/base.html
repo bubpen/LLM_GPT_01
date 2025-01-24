@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="{% static 'css/style.css' %}">
+    <title>Document</title>
+    {% block head %}{% endblock head %}
+</head>
+<body>
+    <div class="navbar">
+        {% if request.user.is_authenticated %}
+        <h3>안녕하세요, {{ user }}님</h3>
+        <a href = "{% url 'users:profile' user.pk %}"><button>프로필</button></a>
+        <form action = "{% url 'users:logout' %}" method = "POST">
+            {% csrf_token %}
+            <input type = 'submit' value = '로그아웃'>
+        </form>
+
+        {% else %}
+        
+        <a href = "{% url 'users:login' %}">로그인</a>
+        <a href = "{% url 'users:signup' %}">회원가입</a>
+        {% endif %}
+    </div>
+    <div class = 'container'>
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <P>
+        <a href = "{% url 'posts:post_list' %}">목록으로</a>
+    </P>
+</body>
+</html>
